@@ -10,6 +10,11 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.static('public'));
 
+// Rota para servir o index.html no root
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Pasta temporária para uploads no ambiente serverless (Vercel)
 const uploadsDir = path.join('/tmp', 'uploads');
 if (!fs.existsSync(uploadsDir)) {
