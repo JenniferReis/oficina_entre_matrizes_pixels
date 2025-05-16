@@ -9,17 +9,21 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(express.static('public'));
-app.use('/uploads', express.static('uploads'));
-app.use(express.json());
 
-// Garante que a pasta uploads exista
-const uploadsDir = path.join(__dirname, 'uploads');
+// Pasta temporária para uploads no ambiente serverless (Vercel)
+const uploadsDir = path.join('/tmp', 'uploads');
 if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir);
+  fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
+// Caminho do arquivo data.json na pasta temporária
+const dataFile = path.join('/tmp', 'data.json');
+
+app.use('/uploads', express.static(uploadsDir));
+app.use(express.json());
+
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
+  destination: (req, file, cb) => cb(null, uploadsDir),
   filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
 });
 
@@ -33,12 +37,12 @@ app.post('/upload', upload.single('image'), (req, res) => {
     const newEntry = { name, imagePath };
 
     let data = [];
-    if (fs.existsSync('data.json')) {
-      data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+    if (fs.existsSync(dataFile)) {
+      data = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
     }
 
     data.push(newEntry);
-    fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
+    fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
 
     res.json({ success: true });
   } catch (error) {
@@ -49,7 +53,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
 
 app.get('/images', (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+    const data = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
     res.json(data);
   } catch (error) {
     console.error('Erro ao carregar imagens:', error);
