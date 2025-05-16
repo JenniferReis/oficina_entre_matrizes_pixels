@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!DOCTYPE html>
+  <html lang="en" class="no-mobile">
+
+  <head>
+    <title>Upload - Entre Matrizes e Pixels</title>
+    <meta charset="utf-8">
+    <!-- SEO -->
+    <meta name="description" content="Entre Matrizes e Pixels - Workshop">
+    <meta name="author" content="Entre Matrizes e Pixels - Workshop">
+    <meta name="keywords" content="Entre Matrizes e Pixels - Workshop">
+
+    <link rel="alternate" href="" hreflang="pt-br">
+    <meta name="robots" content="index, follow">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:url" content="www.oozeproducoes.com">
+    <meta property="og:title" content="Entre Matrizes e Pixels - Workshop">
+    <meta property="og:image" content="images/logo-prev.png">
+    <meta property="og:description"
+      content="Esta oficina propõe investigar as relações entre o design gráfico, a gravura e a arte contemporânea a partir da prática da isogravura e da reprodução da imagem por meios digitais.">
+    <meta name="theme-color" content="#191919">
+
+    <meta name="geo.placename" content="Rio de Janeiro">
+    <meta name="geo.region" content="BR">
+    <meta name="description"
+      content="Esta oficina propõe investigar as relações entre o design gráfico, a gravura e a arte contemporânea a partir da prática da isogravura e da reprodução da imagem por meios digitais.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="format-detection" content="telephone=no">
+    <!-- SEO -->
+    <!-- Google tag (gtag.js) -->
+    <script type="text/javascript" async="" src="js/analytics.js"></script>
+    <script type="text/javascript" async="" src="js_2"></script>
+    <script async="" src="js_1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-253624861-1');
+    </script>
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" href="favicon.png">
+
+    <!-- CSS -->
+    <!-- REVOSLIDER CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="css/settings.min.css" media="screen">
+
+    <link rel="stylesheet" href="css/lightbox.min.css">
+
+    <!--  BOOTSTRAP -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!--  GOOGLE FONT -->
+    <link href="css/css.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- ICONS ELEGANT FONT & FONT AWESOME & LINEA ICONS  -->
+    <link rel="stylesheet" href="css/icons-fonts.css">
+    <style>
+      body {
+        margin: 0;
+        background-image: url('/images/banner.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+
+        font-family: "Oswald", sans-serif;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .upload-wrapper {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 40px;
+        border-radius: 12px;
+        width: 400px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        color: #000;
+      }
+
+      @media only screen and (max-width: 480px) {
+        .upload-wrapper {
+          width: 80%;
+        }
+
+        .upload-area {
+          padding: 20px 20px;
+        }
+      }
+
+
+      .upload-wrapper h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .upload-area {
+        border: 2px dashed #ccc;
+        padding: 40px 20px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 10px;
+        position: relative;
+        transition: background 0.2s;
+      }
+
+      .upload-area:hover {
+        background: #f9f9f9;
+      }
+
+      .upload-area i {
+        font-size: 48px;
+        color: #888;
+      }
+
+      .upload-area p {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+
+      #fileInput {
+        display: none;
+      }
+
+      .input-field {
+        margin-top: 20px;
+      }
+
+      .input-field input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #ac3d20;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        letter-spacing: 2px;
+      }
+
+      button:hover {
+        background-color: #913017;
+      }
+
+      .file-name {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #333;
+      }
+    </style>
+  </head>
+
+<body>
+
+  <div class="upload-wrapper">
+    <h2>Exponha sua gravura na nossa galeria!</h2>
+    <div class="upload-area" onclick="document.getElementById('fileInput').click();">
+      <img height="100" src="https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-Transparent-Image.png"
+        alt="Ícone de Upload" class="upload-icon">
+      <p class="file-name" id="fileName">Clique para selecionar</strong></p>
+      <input type="file" id="fileInput" accept="image/*">
+    </div>
+
+    <div class="input-field">
+      <input type="text" id="nameInput" placeholder="Seu nome ou @Instagram">
+    </div>
+
+    <button onclick="upload()">ENVIAR</button>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const fileNameDisplay = document.getElementById('fileName');
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file) {
+        fileNameDisplay.textContent = `Arquivo selecionado: ${file.name}`;
+      } else {
+        fileNameDisplay.textContent = 'Nenhum arquivo selecionado';
+      }
+    });
+
+    async function upload() {
+      const file = fileInput.files[0];
+      const name = document.getElementById('nameInput').value.trim();
+
+      if (!file || !name) {
+        alert("Por favor, selecione um arquivo e digite seu nome ou Instagram.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('image', file);
+      formData.append('name', name);
+
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          alert('Imagem enviada com sucesso!');
+          window.location.href = 'galeria.html';
+        } else {
+          alert('Erro ao enviar imagem.');
+        }
+      } catch (err) {
+        alert('Erro de conexão.');
+      }
+    }
+  </script>
+
+</body>
+
+</html>
